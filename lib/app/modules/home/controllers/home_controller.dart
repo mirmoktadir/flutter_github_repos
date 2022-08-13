@@ -1,13 +1,12 @@
 import 'package:flutter_github_repos/app/data/models/github_repos_model.dart';
 import 'package:get/get.dart';
-
 import '../../../services/api.dart';
 import '../../../services/api_call_status.dart';
 import '../../../services/base_client.dart';
 
 class HomeController extends GetxController {
   // hold data
-  final repos = RxList<Items>();
+  final repoList = RxList<Items>();
   // api call status
   ApiCallStatus apiCallStatus = ApiCallStatus.holding;
 
@@ -19,16 +18,24 @@ class HomeController extends GetxController {
     // *) perform api call
     await BaseClient.get(
       API.baseUrl, // url
+      queryParameters: {
+        "q": "Flutter",
+        "sort": "stars",
+        "order": "desc",
+        "per_page": "10"
+      },
       onSuccess: (response) {
         // api done successfully
-        repos.assignAll(
-            (response.data as List).map((e) => Items.fromJson(e)).toList());
+
+        repoList.assignAll((response.data["items"] as List)
+            .map((e) => Items.fromJson(e))
+            .toList());
         // -) indicate success state
         apiCallStatus = ApiCallStatus.success;
         update();
       },
-      // if you dont pass this method base client
-      // will automaticly handle error and show message
+      // if you don't pass this method base client
+      // will automatically handle error and show message
       onError: (error) {
         // show error message to user
 
