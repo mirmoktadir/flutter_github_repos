@@ -1,5 +1,6 @@
 import 'package:flutter_github_repos/app/data/models/github_repos_model.dart';
 import 'package:get/get.dart';
+import '../../../data/local/my_hive.dart';
 import '../../../services/api.dart';
 import '../../../services/api_call_status.dart';
 import '../../../services/base_client.dart';
@@ -30,6 +31,7 @@ class HomeController extends GetxController {
         repoList.assignAll((response.data["items"] as List)
             .map((e) => Items.fromJson(e))
             .toList());
+
         // -) indicate success state
         apiCallStatus = ApiCallStatus.success;
         update();

@@ -44,31 +44,43 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Material repoListWidget(ThemeData theme, int index) {
-    return Material(
-      child: InkWell(
-        splashColor: theme.primaryColor.withOpacity(.5),
-        splashFactory: InkSplash.splashFactory,
-        borderRadius: BorderRadius.circular(15),
-        onTap: () => Get.to(() => RepoDetailView()),
-        child: Ink(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.white,
-            border: Border.all(
-              width: 1,
-              color: theme.primaryColor.withOpacity(.5),
+  ClipRRect repoListWidget(ThemeData theme, int index) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Material(
+        child: InkWell(
+          splashColor: theme.splashColor,
+          splashFactory: InkSplash.splashFactory,
+          borderRadius: BorderRadius.circular(15),
+          onTap: () => Get.to(
+              () => RepoDetailView(
+                    owner: controller.repoList[index].name.toString(),
+                    description:
+                        controller.repoList[index].description.toString(),
+                    imgUrl:
+                        controller.repoList[index].owner!.avatarUrl.toString(),
+                  ),
+              transition: Transition.leftToRightWithFade,
+              duration: const Duration(milliseconds: 500)),
+          child: Ink(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: theme.primaryColor,
+              border: Border.all(
+                width: 1,
+                color: theme.primaryColor.withOpacity(.5),
+              ),
             ),
-          ),
-          child: Container(
-            margin: const EdgeInsets.all(8),
-            child: Center(
-              child: Text(
-                controller.repoList[index].fullName.toString(),
-                style: TextStyle(
-                  fontSize: MyFonts.headline6TextSize,
+            child: Container(
+              margin: const EdgeInsets.all(8),
+              child: Center(
+                child: Text(
+                  controller.repoList[index].fullName.toString(),
+                  style: TextStyle(
+                    fontSize: MyFonts.headline6TextSize,
+                  ),
+                  maxLines: 2,
                 ),
-                maxLines: 2,
               ),
             ),
           ),
