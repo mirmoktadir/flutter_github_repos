@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_repos/app/modules/home/views/repo_detail_view.dart';
+import 'package:flutter_github_repos/config/theme/light_theme_colors.dart';
 import 'package:flutter_github_repos/config/theme/my_fonts.dart';
 
 import 'package:get/get.dart';
@@ -22,7 +23,9 @@ class HomeView extends GetView<HomeController> {
           return MyWidgetsAnimator(
             apiCallStatus: controller.apiCallStatus,
             loadingWidget: () => const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
             ),
             errorWidget: () => const Center(
               child: Text('Something went wrong!'),
@@ -44,12 +47,12 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  ClipRRect repoListWidget(ThemeData theme, int index) {
+  Widget repoListWidget(ThemeData theme, int index) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Material(
         child: InkWell(
-          splashColor: theme.splashColor,
+          splashColor: LightThemeColors.splashColor,
           splashFactory: InkSplash.splashFactory,
           borderRadius: BorderRadius.circular(15),
           onTap: () => Get.to(
@@ -61,18 +64,18 @@ class HomeView extends GetView<HomeController> {
                         controller.repoList[index].owner!.avatarUrl.toString(),
                   ),
               transition: Transition.leftToRightWithFade,
-              duration: const Duration(milliseconds: 500)),
+              duration: const Duration(milliseconds: 600)),
           child: Ink(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: theme.primaryColor,
               border: Border.all(
                 width: 1,
-                color: theme.primaryColor.withOpacity(.5),
+                color: LightThemeColors.splashColor.withOpacity(.4),
               ),
             ),
             child: Container(
-              margin: const EdgeInsets.all(8),
+              margin: const EdgeInsets.all(10),
               child: Center(
                 child: Text(
                   controller.repoList[index].fullName.toString(),

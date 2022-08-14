@@ -1,7 +1,3 @@
-import 'package:hive/hive.dart';
-
-part 'github_repos_model.g.dart';
-
 class GithubRepos {
   GithubRepos({
     this.totalCount,
@@ -34,7 +30,6 @@ class GithubRepos {
   }
 }
 
-@HiveType(typeId: 2)
 class Items {
   Items({
     this.id,
@@ -200,162 +195,84 @@ class Items {
     defaultBranch = json['default_branch'];
     score = json['score'];
   }
-  @HiveField(0)
   num? id;
-  @HiveField(1)
   String? nodeId;
-  @HiveField(2)
   String? name;
-  @HiveField(3)
   String? fullName;
-  @HiveField(4)
   bool? private;
-  @HiveField(5)
   Owner? owner;
-  @HiveField(6)
   String? htmlUrl;
-  @HiveField(7)
   String? description;
-  @HiveField(8)
   bool? fork;
-  @HiveField(9)
   String? url;
-  @HiveField(10)
   String? forksUrl;
-  @HiveField(11)
   String? keysUrl;
-  @HiveField(12)
   String? collaboratorsUrl;
-  @HiveField(13)
   String? teamsUrl;
-  @HiveField(14)
   String? hooksUrl;
-  @HiveField(15)
   String? issueEventsUrl;
-  @HiveField(16)
   String? eventsUrl;
-  @HiveField(17)
   String? assigneesUrl;
-  @HiveField(18)
   String? branchesUrl;
-  @HiveField(19)
   String? tagsUrl;
-  @HiveField(20)
   String? blobsUrl;
-  @HiveField(21)
   String? gitTagsUrl;
-  @HiveField(22)
   String? gitRefsUrl;
-  @HiveField(23)
   String? treesUrl;
-  @HiveField(24)
   String? statusesUrl;
-  @HiveField(25)
   String? languagesUrl;
-  @HiveField(26)
   String? stargazersUrl;
-  @HiveField(27)
   String? contributorsUrl;
-  @HiveField(28)
   String? subscribersUrl;
-  @HiveField(29)
   String? subscriptionUrl;
   String? commitsUrl;
-  @HiveField(30)
   String? gitCommitsUrl;
-  @HiveField(31)
   String? commentsUrl;
-  @HiveField(32)
   String? issueCommentUrl;
-  @HiveField(33)
   String? contentsUrl;
-  @HiveField(34)
   String? compareUrl;
-  @HiveField(35)
   String? mergesUrl;
-  @HiveField(36)
   String? archiveUrl;
-  @HiveField(37)
   String? downloadsUrl;
-  @HiveField(38)
   String? issuesUrl;
-  @HiveField(39)
   String? pullsUrl;
-  @HiveField(40)
   String? milestonesUrl;
-  @HiveField(41)
   String? notificationsUrl;
-  @HiveField(42)
   String? labelsUrl;
-  @HiveField(43)
   String? releasesUrl;
-  @HiveField(45)
   String? deploymentsUrl;
-  @HiveField(46)
   String? createdAt;
-  @HiveField(47)
   String? updatedAt;
-  @HiveField(48)
   String? pushedAt;
-  @HiveField(49)
   String? gitUrl;
-  @HiveField(50)
   String? sshUrl;
-  @HiveField(51)
   String? cloneUrl;
-  @HiveField(52)
   String? svnUrl;
-  @HiveField(53)
   String? homepage;
-  @HiveField(54)
   num? size;
-  @HiveField(55)
   num? stargazersCount;
-  @HiveField(56)
   num? watchersCount;
-  @HiveField(57)
   String? language;
-  @HiveField(58)
   bool? hasIssues;
-  @HiveField(59)
   bool? hasProjects;
-  @HiveField(60)
   bool? hasDownloads;
-  @HiveField(61)
   bool? hasWiki;
-  @HiveField(62)
   bool? hasPages;
-  @HiveField(63)
   num? forksCount;
-  @HiveField(64)
   dynamic mirrorUrl;
-  @HiveField(65)
   bool? archived;
-  @HiveField(66)
   bool? disabled;
-  @HiveField(67)
   num? openIssuesCount;
-  @HiveField(68)
   License? license;
-  @HiveField(69)
   bool? allowForking;
-  @HiveField(70)
   bool? isTemplate;
-  @HiveField(71)
   bool? webCommitSignoffRequired;
-  @HiveField(72)
   List<String>? topics;
-  @HiveField(73)
   String? visibility;
-  @HiveField(74)
   num? forks;
-  @HiveField(75)
   num? openIssues;
-  @HiveField(76)
   num? watchers;
-  @HiveField(77)
   String? defaultBranch;
-  @HiveField(78)
   num? score;
 
   Map<String, dynamic> toJson() {
