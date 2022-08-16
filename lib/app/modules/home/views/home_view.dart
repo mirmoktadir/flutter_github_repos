@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_repos/app/data/local/my_shared_pref.dart';
 import 'package:flutter_github_repos/app/modules/home/views/repo_detail_view.dart';
 import 'package:flutter_github_repos/app/modules/home/views/shimmer/home_view_shimmer.dart';
-import 'package:flutter_github_repos/app/services/api_call_status.dart';
 import 'package:flutter_github_repos/config/theme/light_theme_colors.dart';
 import 'package:flutter_github_repos/config/theme/my_fonts.dart';
-import 'package:flutter_github_repos/utils/constants.dart';
+import 'package:flutter_github_repos/utils/error_widget.dart';
 
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -28,29 +27,7 @@ class HomeView extends GetView<HomeController> {
           return MyWidgetsAnimator(
             apiCallStatus: controller.apiCallStatus,
             loadingWidget: () => const HomeViewShimmer(),
-            errorWidget: () => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Image(
-                    image: AssetImage(AppImages.kErrorIMG),
-                  ),
-                ),
-                const SizedBox(height: 15),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: const Color(0xFF1D1D26),
-                  ),
-                  onPressed: () {
-                    controller.getData();
-                  },
-                  child: const Text(
-                    "Try again!",
-                  ),
-                ),
-              ],
-            ),
+            errorWidget: () => AppErrorWidget(controller: controller),
             successWidget: () => ListView(
               padding: EdgeInsets.zero,
               physics: const NeverScrollableScrollPhysics(),
