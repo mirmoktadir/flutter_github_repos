@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../app/data/local/my_shared_pref.dart';
 import '../translations/localization_service.dart';
 
-class MyFonts
-{
+class MyFonts {
   // return the right font depending on app language
-  static TextStyle get getAppFontType => LocalizationService.supportedLanguagesFontsFamilies[MySharedPref.getCurrentLocal().languageCode]!;
+  static TextStyle get getAppFontType =>
+      LocalizationService.supportedLanguagesFontsFamilies[
+          MySharedPref.getCurrentLocal().languageCode]!;
 
   // headlines text font
   static TextStyle get headlineTextStyle => getAppFontType;
@@ -19,10 +20,10 @@ class MyFonts
   static TextStyle get buttonTextStyle => getAppFontType;
 
   // app bar text font
-  static TextStyle get appBarTextStyle  => getAppFontType;
+  static TextStyle get appBarTextStyle => getAppFontType;
 
   // chips text font
-  static TextStyle get chipTextStyle  => getAppFontType;
+  static TextStyle get chipTextStyle => getAppFontType;
 
   // appbar font size
   static double get appBarTittleSize => 18.sp;
@@ -30,6 +31,7 @@ class MyFonts
   // body font size
   static double get body1TextSize => 13.sp;
   static double get body2TextSize => 13.sp;
+  static double get body3TextSize => 11.sp;
 
   // headlines font size
   static double get headline1TextSize => 50.sp;

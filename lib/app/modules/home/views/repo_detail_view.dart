@@ -5,14 +5,17 @@ import 'package:flutter_github_repos/utils/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class RepoDetailView extends GetView {
+  final String time;
   final String owner;
   final String description;
   final String imgUrl;
 
   const RepoDetailView(
       {Key? key,
+      required this.time,
       required this.owner,
       required this.description,
       required this.imgUrl})
@@ -50,7 +53,7 @@ class RepoDetailView extends GetView {
             child: CachedNetworkImage(
               imageUrl: imgUrl,
               errorWidget: (context, _, error) => Image.asset(
-                AppImages.kAppIcon,
+                AppImages.kIcon,
                 fit: BoxFit.cover,
               ),
             ),
@@ -58,11 +61,25 @@ class RepoDetailView extends GetView {
           const SizedBox(width: 25),
           SizedBox(
             width: 190.w,
-            child: Text(
-              owner,
-              style: TextStyle(
-                fontSize: MyFonts.headline5TextSize,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  owner,
+                  style: TextStyle(
+                    fontSize: MyFonts.headline5TextSize,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  'updated at :${DateFormat('MM-dd-yy   hh:mm a').format(DateTime.parse(time))} ',
+                  style: TextStyle(
+                    fontSize: MyFonts.body3TextSize,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -79,6 +96,8 @@ class RepoDetailView extends GetView {
         style: TextStyle(
           fontSize: MyFonts.headline6TextSize,
         ),
+        maxLines: 12,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }

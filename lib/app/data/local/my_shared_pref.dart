@@ -12,12 +12,19 @@ class MySharedPref {
   static const String _currentLocalKey = 'current_local';
   static const String _lightThemeKey = 'is_theme_light';
   static const String _itemData = 'item_data';
+  static const String _sortingKey = 'time_data';
 
   /// init get storage services
   static init() async {
     await GetStorage.init();
     _storage = GetStorage();
   }
+
+  ///set sort
+  static void setSort(String sort) => _storage.write(_sortingKey, sort);
+
+  ///get sort
+  static String? getSort() => _storage.read(_sortingKey);
 
   ///set item
   static List<dynamic> setItemData(dynamic item) =>

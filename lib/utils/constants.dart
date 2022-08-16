@@ -1,3 +1,4 @@
 class AppImages {
-  static String get kAppIcon => 'assets/images/app_icon.png';
+  static String get kIcon => 'assets/images/icon.png';
+  static String get kErrorIMG => 'assets/images/error_image.png';
 }
