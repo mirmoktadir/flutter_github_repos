@@ -81,6 +81,7 @@ class HomeView extends GetView<HomeController> {
           ),
           const SizedBox(width: 10),
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () {
               MySharedPref.setSort("stars");
 
@@ -108,6 +109,7 @@ class HomeView extends GetView<HomeController> {
           ),
           const SizedBox(width: 14),
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () {
               MySharedPref.setSort("time");
 
